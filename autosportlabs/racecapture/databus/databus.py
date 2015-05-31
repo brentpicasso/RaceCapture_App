@@ -9,7 +9,7 @@ from autosportlabs.racecapture.databus.filter.currentlaptimefilter import Curren
 from autosportlabs.util.threadutil import safe_thread_exit
 
 
-DEFAULT_DATABUS_UPDATE_INTERVAL = 0.1 #10Hz UI update rate
+DEFAULT_DATABUS_UPDATE_INTERVAL = 0.02 #10Hz UI update rate
 
 class DataBusFactory(object):
     def create_standard_databus(self, system_channels):

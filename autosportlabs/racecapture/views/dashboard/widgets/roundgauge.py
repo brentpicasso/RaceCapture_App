@@ -9,6 +9,26 @@ from utils import kvFind
 
 Builder.load_file('autosportlabs/racecapture/views/dashboard/widgets/roundgauge.kv')
 
+from kivy.uix.image import Image
+class IndexedImage(Image):
+    
+    def __init__(self, **kwargs):
+        super(IndexedImage, self).__init__(**kwargs)
+
+        
+    def anim_index(self, index):
+        self.anim_delay = -1      
+        coreimage = self._coreimage
+        if not coreimage._image:
+            return
+        textures = self._coreimage.image.textures
+        if index >= len(textures) or index < 0:
+            index = 0
+
+        coreimage._anim_index = index
+        coreimage._texture = coreimage.image.textures[index]
+        self.texture = self._coreimage.texture
+
 class RoundGauge(FontGraphicalGauge):
     
     def __init__(self, **kwargs):

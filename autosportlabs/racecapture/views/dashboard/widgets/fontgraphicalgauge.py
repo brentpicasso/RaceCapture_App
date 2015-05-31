@@ -3,6 +3,8 @@ kivy.require('1.8.0')
 from utils import kvFind
 from kivy.properties import NumericProperty
 from autosportlabs.racecapture.views.dashboard.widgets.graphicalgauge import GraphicalGauge
+
+    
 class FontGraphicalGauge(GraphicalGauge):
     
     def __init__(self, **kwargs):
@@ -32,7 +34,10 @@ class FontGraphicalGauge(GraphicalGauge):
     
             range = max - min
             offset = railedValue - min
-            view.text = '' if offset == 0 else unichr(ord(u'\uE600') + int(((offset * 100) / range)) - 1)
+            
+            view.anim_index(int(((offset * 100) / range)) - 1)
+            
+#            view.text = '' if offset == 0 else unichr(ord(u'\uE600') + int(((offset * 100) / range)) - 1)
                 
         except Exception as e:
             print('error setting font gauge value ' + str(e))
